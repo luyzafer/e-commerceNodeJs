@@ -19,3 +19,6 @@ http://localhost:8080/save
         "price": "1.50",
         "thumbnail": "www.test50.com"
        } 
+
+Delete All products
+http://localhost:8080/products/deleteAll
