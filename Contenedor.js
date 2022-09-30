@@ -1,4 +1,5 @@
 const fs = require('fs');
+const product = require('./Product.js')
 
 class Contenedor{
 
@@ -9,34 +10,24 @@ class Contenedor{
     }
 
     async getAll(){
+        console.log("Entering to get all the products")
         try {
-        
             const productsReturned = await fs.promises.readFile('./productos.txt', 'utf-8')
             let productsDB = JSON.parse(productsReturned)
-            idProduct = getLastId(productsDB)
             return productsDB
         } catch (error) {
             throw new Error(`Error reading the file: ${error.message}`)
         }
     }
 
-    getLastId(productsDB){
-        let lastId = 0
-        productsDB.forEach(element => {
-            if(element.id>lastId){
-                lastId=element.id
-            }
-        });
-        return lastId
-    }
 
-    //save into the array, create an array
     async save (product){
+        console.log("Entering to save the new product")
         try{
-            return getAll().then(productsDB=> {
-                product.id= getNewId()
+            return this.getAll().then(productsDB=> {
                 productsDB.push(product)
-                writeInDB(productsDB)
+                this.writeInDB(productsDB)
+                console.log("Saved in DB")
             })
 
         }catch(error){
@@ -44,15 +35,10 @@ class Contenedor{
         }
     }
 
-    getNewId(){
-        idProduct=idProduct+1
-        return idProduct
-    }
-
-
     async getById(id){
+        console.log("Entering to find the product in DB")
         try{  
-            return getAll().then(products=> {
+            return this.getAll().then(products=> {
                 let productFound = null 
                 productFound = products.find(p => p.id == id)   
                 return productFound == undefined ? null : productFound
@@ -63,6 +49,7 @@ class Contenedor{
     }
 
     async writeInDB(listProducts){
+        console.log("Entering to write in DB")
         try {
             await fs.promises.writeFile('./productos.txt', JSON.stringify(listProducts, null, 2))
         } catch (error) {
@@ -94,22 +81,9 @@ class Contenedor{
             throw new Error(`Error deleting all products`)
         }
     }
-
-    // class Product {
-    //     id
-    //     title
-    //     price
-    //     thumbnail
-
-    //     constructor(id,title, price, thumbnail) { 
-    //     this.id = id
-    //     this.title = title
-    //     this.price = price
-    //     this.thumbnail = thumbnail
-    //     }
-        
-    // }
 }
+
+    module.exports = Contenedor
 
 
 
