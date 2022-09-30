@@ -43,5 +43,8 @@ app.post("/save", async (req, res) => {
 
 });
 
+app.delete('/products/deleteAll',  (rec, res) => {
+    productsLogic.deleteAll().then(item => res.send("All products where deleted"))
+})
 
 

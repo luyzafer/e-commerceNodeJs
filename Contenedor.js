@@ -74,7 +74,7 @@ class Contenedor{
     async deleteAll(){
         try {
             let listEmpty = [] 
-            writeInDB(listEmpty)
+            this.writeInDB(listEmpty)
             console.log(`New list of products after removing all ${JSON.stringify(listEmpty)}`)
             
         } catch (error) {
