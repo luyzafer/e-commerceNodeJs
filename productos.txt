@@ -208,5 +208,17 @@
     "title": "book50",
     "price": "1.50",
     "thumbnail": "www.test50.com"
+  },
+  {
+    "id": 52,
+    "title": "book52",
+    "price": "1.52",
+    "thumbnail": "www.test52.com"
+  },
+  {
+    "id": 53,
+    "title": "book53",
+    "price": "1.53",
+    "thumbnail": "www.test53.com"
   }
 ]

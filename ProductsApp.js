@@ -37,10 +37,11 @@ app.get('/products/:id', async (req, res) => {
 
 //Missing to implement receive many products at the same time
 app.post("/save", async (req, res) => {
-    let newProduct =  new Product(req.body.id, req.body.title, req.body.price, req.body.thumbnail)
-    productsLogic.save(newProduct)
-    res.json(newProduct)
-
+    productsLogic.getAll().then(items => utilityTool.getLastId(items)).then(id=> {
+        let newProduct =  new Product(id+1, req.body.title, req.body.price, req.body.thumbnail)
+        productsLogic.save(newProduct)
+        res.json(newProduct)
+    })
 });
 
 app.delete('/products/deleteAll',  (req, res) => {
