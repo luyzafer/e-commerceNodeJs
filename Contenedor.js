@@ -58,12 +58,12 @@ class Contenedor{
     }
 
     async deleteById(id){
-
+        console.log("Entering to delete the product with id: " + id)
         try {
-            getAll().then(products => {
+            this.getAll().then(products => {
             return products.filter(prod => prod.id !=id )
             }).then(async newList=> {
-                writeInDB(newList)
+                this.writeInDB(newList)
                 console.log(`New list of products after removing id ${id} ${JSON.stringify(newList)}`)
             })
         } catch (error) {

@@ -20,20 +20,20 @@ app.listen(PORT, ()=> {
     console.log(`Servidor Http escuchando en el puerto ${PORT}`)
 })
 
-app.get('/products', (req, res) => {
-    productsLogic.getAll().then(books => res.send(books))
-});
+ app.get('/products', (req, res) => {
+     productsLogic.getAll().then(books => res.send(books))
+ });
 
 app.get('/productRandom', (req, res)=>{
     productsLogic.getAll().then(products => utilityTool.getRandomItem(products))
             .then(item => res.send(item))
 });
 
-// app.get('/products/:id', async (req, res) => {
-//     const id= req.params.id
-//     let productFound= await productsLogic.getById(id)
-//     res.send(productFound)
-// });
+app.get('/products/:id', async (req, res) => {
+    const id= req.params.id
+    let productFound= await productsLogic.getById(id)
+    res.send(productFound)
+});
 
 //Missing to implement receive many products at the same time
 app.post("/save", async (req, res) => {
@@ -43,8 +43,12 @@ app.post("/save", async (req, res) => {
 
 });
 
-app.delete('/products/deleteAll',  (rec, res) => {
+app.delete('/products/deleteAll',  (req, res) => {
     productsLogic.deleteAll().then(item => res.send("All products where deleted"))
-})
+}); 
 
 
+app.delete('/products/delete/:id',  (req, res) => {
+    const id= req.params.id
+    productsLogic.deleteById(id).then(item=> res.send("Removed the product" + id))
+}); 
