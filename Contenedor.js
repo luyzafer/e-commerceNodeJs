@@ -13,10 +13,10 @@ class Contenedor{
         console.log("Entering to get all the products")
         try {
             const productsReturned = await fs.promises.readFile('./productos.txt', 'utf-8')
-            let productsDB = JSON.parse(productsReturned)
+            let productsDB = JSON.parse(productsReturned.toString())
             return productsDB
         } catch (error) {
-            throw new Error(`Error reading the file: ${error.message}`)
+            throw new Error("Error reading the file: " + error.message)
         }
     }
 
