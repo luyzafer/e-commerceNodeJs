@@ -22,5 +22,29 @@
     "title": "book3",
     "price": "3.5",
     "thumbnail": "www.test3.com"
+  },
+  {
+    "id": 5,
+    "title": "Libro de pruebita",
+    "price": "56",
+    "thumbnail": "http://localhost:8080/api/products/addNewBook"
+  },
+  {
+    "id": 6,
+    "title": "ok",
+    "price": "22",
+    "thumbnail": "www"
+  },
+  {
+    "id": 7,
+    "title": "sss",
+    "price": "ss",
+    "thumbnail": "ss"
+  },
+  {
+    "id": 8,
+    "title": "luisa",
+    "price": "luisa",
+    "thumbnail": "luisa"
   }
 ]

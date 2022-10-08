@@ -35,6 +35,21 @@ class Contenedor{
         }
     }
 
+    async update (product){
+        console.log("Entering to update the  product" + product.id)
+        try{
+            const allProducts = await this.getAll()
+            const elementToUpdate = allProducts.find(item=> item.id== product.id)
+            if(elementToUpdate){
+               const index= allProducts.indexOf(elementToUpdate)
+               allProducts[index]= product
+               this.writeInDB(allProducts)
+            }
+        }catch(error){
+            throw new Error("Error updating the product: " + product.id + error.message)
+        }
+    }
+
     async getById(id){
         console.log("Entering to find the product in DB")
         try{  
@@ -85,44 +100,3 @@ class Contenedor{
 
     module.exports = Contenedor
 
-
-
-//**********************TESTING --> Remove the docummented mark for the method you wanna test **********************
-
-
-//Save books in the DB
-    //  save(new Product(0,'book1', '1.5', 'www.test1.com'))
-    //  .then(item=> save(new Product(0,'book2', '2.5', 'www.test2.com')))
-    //  .then(item=>save(new Product(0,'book2', '2.5', 'www.test2.com')))
-    //  .then(item=>save(new Product(0,'book3', '3.5', 'www.test3.com')))
-    //  .then(item=>save(new Product(0,'book4', '4.5', 'www.test4.com')))
-    //  .then(item=>save(new Product(0,'book5', '5.5', 'www.test5.com')))
-    //  .then(item=>save(new Product(0,'book6', '6.5', 'www.test6.com')))
-    //  .then(item=>save(new Product(0,'book7', '7.5', 'www.test7.com')))
-    //  .then(item=>save(new Product(0,'book8', '8.5', 'www.test8.com')))
-    //  .then(item=>save(new Product(0,'book9', '9.5', 'www.test9.com')))
-    //  .then(item=>save(new Product(0,'book10', '10.5', 'www.test10.com')))
-
-//Get all the books from the DB
-    // getAll().then(result=> {
-    //     if(result.length==0)
-    //              console.log(`There are not books in the database `)
-    //         else
-    //              console.log(result)
-    // })
-    
-
-//Get by id ==> id 2 exist
-    //getById(2).then(value => console.log('Product found ' + JSON.stringify(value)))
-
-//Get by id ==> id 100 doesn't exist
-    //getById(100).then(value => console.log('Product found ' + value))
-
-//Delete by id ==> id 1 exist
-    //deleteById(1)
-
-//Delete by id ==> id 100 doesn't exist
-    //deleteById(100)
-
-//Delete all the books in the DB
-    //deleteAll()
