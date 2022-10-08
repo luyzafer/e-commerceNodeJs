@@ -34,12 +34,13 @@ app.set('views', './views');
 // establecemos la carpeta donde estan nuestro achivos publicos
 app.use(express.static('public'))
 
+
 //borrar
 // app.listen(PORT, ()=> {
 //     console.log(`Servidor Http escuchando en el puerto ${PORT}`)
 // })
 
-fs.readFile('./public/index.html', function (err, html) {
+fs.readFile('./views/index.handlebars', function (err, html) {
     if (err) {
         throw err; 
     }       
