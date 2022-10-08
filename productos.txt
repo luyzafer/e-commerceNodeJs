@@ -1,5 +1,4 @@
-{
-  "products":[
+[
   {
     "id": 1,
     "title": "book1",
@@ -25,4 +24,3 @@
     "thumbnail": "www.test3.com"
   }
 ]
-}
