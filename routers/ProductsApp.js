@@ -13,7 +13,7 @@ const { Console } = require("console");
 const { Exception } = require("handlebars");
 
 router.get('/list', async(req, res) => {
-
+    console.log("aca fue")
     const books = await productsLogic.getAll()
     res.render("listOfBooks", {
         books,
@@ -28,28 +28,32 @@ router.get('/productRandom', async (req, res)=>{
             
 });
 
-// router.get('/:id', async (req, res) => {
-//     const id= req.params.id
-//     let productFound= await productsLogic.getById(id)
-//     res.render('datos' , productFound)
-// });
+router.get('/:id', async (req, res) => {
+    console.log("byID")
+    const id= req.params.id
+    let productFound= await productsLogic.getById(id)
+    res.json(productFound)
+});
 
 //Corregir enviar a pantalla de lista
 router.post("/addNewBook", async (req, res) => {
+    console.log("entre aca")
     productsLogic.getAll().then(items => utilityTool.getLastId(items)).then(id=> {
         let newProduct =  new Product(id+1, req.body.title, req.body.price, req.body.thumbnail)
         productsLogic.save(newProduct)
         res.json(newProduct)
+       // res.redirect("/tasks/list");
     })
 });
 
 router.get("/addNewBook", (req, res) => {
+    console.log("entre aca")
     const formInfo={
       botonName:"Crear",
       metodo:"POST",
       url:"/api/products/addNewBook"
     }
-    res.render("formTareas",formInfo);
+    res.render("addProduct",formInfo);
   });
   
 
@@ -63,21 +67,17 @@ router.put("/edit/:id", async (req, res) => {
 });
 
 router.get("/edit/:id",async (req,res)=>{
+    console.log("edit id get")
     const {id}  = req.params;
     const productToEdit =  await productsLogic.getById(id)
     console.log(productToEdit)
     const formInfo={
         botonName:"Edit",
         metodo:"PUT",
-        url:"/api/products/edit/:id"+id,
-        title: productToEdit.title,
-        price: productToEdit.price,
-        thumbnail: productToEdit.thumbnail,
+        url:"/api/products/edit/"+id
     }
-    res.render("formTareas",formInfo);
+    res.render("addProduct", {productToEdit, ...formInfo});
 });
-
-
 
 
 router.delete('/deleteAll',  (req, res) => {
