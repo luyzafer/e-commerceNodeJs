@@ -19,32 +19,20 @@
   },
   {
     "id": 4,
-    "title": "book3",
-    "price": "3.5",
-    "thumbnail": "www.test3.com"
+    "title": "lu",
+    "price": "9",
+    "thumbnail": "ddd"
   },
   {
     "id": 5,
-    "title": "Test",
-    "price": "9",
-    "thumbnail": "www.test.com"
+    "title": "cc",
+    "price": "cc",
+    "thumbnail": "cc"
   },
   {
     "id": 6,
-    "title": "ok",
-    "price": "98",
-    "thumbnail": "ks"
-  },
-  {
-    "id": 7,
-    "title": "aa",
-    "price": "aa",
-    "thumbnail": "aa"
-  },
-  {
-    "id": 8,
-    "title": "df",
-    "price": "ff",
-    "thumbnail": "ff"
+    "title": "vv",
+    "price": "6",
+    "thumbnail": "vv"
   }
 ]

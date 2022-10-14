@@ -35,18 +35,18 @@ router.get('/productRandom', async (req, res) => {
 //     res.json(productFound)
 // });
 
-//Corregir enviar a pantalla de lista
+
 router.post("/addNewBook", async (req, res) => {
-    console.log("entre aca")
-    await productsLogic.getAll().then(items => utilityTool.getLastId(items)).then(id => {
+    console.log("entre post addNewBook")
+    await productsLogic.getAll().then(items => utilityTool.getLastId(items)).then(async id => {
         let newProduct = new Product(id + 1, req.body.title, req.body.price, req.body.thumbnail)
-        productsLogic.save(newProduct)
-    }).then(productsLogic.getAll().then(books => {
-        console.log(books)
+        await productsLogic.save(newProduct)
+    })
+    
+    let books = await productsLogic.getAll()
         res.render("listOfBooks", {
             books,
-        })
-    }))
+     })
 });
 
 router.get("/addNewBook", (req, res) => {
@@ -97,14 +97,13 @@ router.delete('/delete/:id', (req, res) => {
     productsLogic.deleteById(id).then(item => res.send("Removed the product" + id))
 });
 
-router.get('/delete/:id', (req, res) => {
+router.get('/delete/:id', async (req, res) => {
     console.log("delete get")
     const id = req.params.id
-    productsLogic.deleteById(id).then(productsLogic.getAll().then(books => {
-        console.log(books)
-        res.render("listOfBooks", {
-            books,
-        })}))
+    let books = await productsLogic.deleteById(id)
+    res.render("listOfBooks", {
+        books,
+    })
 });
 
 module.exports = router;
