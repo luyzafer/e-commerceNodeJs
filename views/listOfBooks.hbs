@@ -1,26 +1,42 @@
+
 <ul>
     {{#if books.length}}
-    <table class="table">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Thumbnail</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <h2></h2>
+
+        {{#each books}}
         <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Price</th>
-            <th scope="col">Thumbnail</th>
-            <th scope="col">Action</th>
-        </tr>
-    </table>
-    <h2>{{#each books}}</h2>
-    <table class="table">
-        <tr>
+
             <td>{{title}}</td>
             <td>{{price}}</td>
             <td>{{thumbnail}}</td>
             <td>
-                <a href="/api/products/edit/{{id}}" class="btn btn-secondary">
+                <a href="/api/products/edit/{{id}}">
+                    Edit
+                </a>
+                <a data-method="delete" href="/api/products/delete/{{id}}">
+                    Delete
+                </a>
             </td>
+
         </tr>
+        {{/each}}
+
     </table>
-    {{/each}}
+
     {{else}}
     <p class="text-black display-3 text-center my-5">No tenemos tareas</p>
     {{/if}}
 </ul>
+<a class="btn btn-info" href="/" role="button">
+    Back to the initial page
+</a>

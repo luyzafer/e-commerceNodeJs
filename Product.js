@@ -1,5 +1,5 @@
 class Product {
-    id
+    id = 0
     title
     price
     thumbnail

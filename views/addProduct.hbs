@@ -6,7 +6,7 @@
         name="title"
         placeholder="Add the title"
         class="form-control"
-        value="{{title}}"
+        value="{{productToEdit.title}}"
         autofocus
     />
     </div>
@@ -17,7 +17,7 @@
         name="price"
         placeholder="Add the price"
         class="form-control"
-        value="{{price}}"
+        value="{{productToEdit.price}}"
         autofocus
     />
     </div>
@@ -28,7 +28,7 @@
         name="thumbnail"
         placeholder="Add the thumbnail"
         class="form-control"
-        value="{{thumbnail}}"
+        value="{{productToEdit.thumbnail}}"
         autofocus
     />
     </div>
@@ -36,4 +36,9 @@
     <button type="submit" class="btn btn-primary btn-block">
     {{botonName}}
     </button>
+
+    
+    <a class="bbtn btn-info" href="/" role="button">
+        Back to the initial page
+    </a>
 </form>

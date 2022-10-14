@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "book1",
-    "price": "1.5",
+    "price": "9",
     "thumbnail": "www.test1.com"
   },
   {
@@ -25,26 +25,26 @@
   },
   {
     "id": 5,
-    "title": "Libro de pruebita",
-    "price": "56",
-    "thumbnail": "http://localhost:8080/api/products/addNewBook"
+    "title": "Test",
+    "price": "9",
+    "thumbnail": "www.test.com"
   },
   {
     "id": 6,
     "title": "ok",
-    "price": "22",
-    "thumbnail": "www"
+    "price": "98",
+    "thumbnail": "ks"
   },
   {
     "id": 7,
-    "title": "sss",
-    "price": "ss",
-    "thumbnail": "ss"
+    "title": "aa",
+    "price": "aa",
+    "thumbnail": "aa"
   },
   {
     "id": 8,
-    "title": "luisa",
-    "price": "luisa",
-    "thumbnail": "luisa"
+    "title": "df",
+    "price": "ff",
+    "thumbnail": "ff"
   }
 ]
