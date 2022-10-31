@@ -1,4 +1,3 @@
-//const http = require("http")
 const { Router } = require("express");
 const router = Router();
 const Contenedor = require("../appLogic.js");
@@ -6,11 +5,13 @@ const productsLogic = new Contenedor();
 const Utility = require('../Utility');
 const Product = require("../Product.js");
 const utilityTool = new Utility();
-const product = new Product();
 
 
-const { Console } = require("console");
-const { Exception } = require("handlebars");
+const messages = [
+	{ author: 'Juan', text: '¡Hola! ¿Qué tal?' },
+	{ author: 'Pedro', text: 'Muy bien! ¿Y vos?' },
+	{ author: 'Ana', text: 'Genial!' }
+]
 
 router.get('/list', async (req, res) => {
     console.log("aca fue")
@@ -43,9 +44,9 @@ router.post("/addNewBook", async (req, res) => {
         await productsLogic.save(newProduct)
     })
     
-    let books = await productsLogic.getAll()
+    let products = await productsLogic.getAll()
         res.render("listOfBooks", {
-            books,
+            products,
      })
 });
 

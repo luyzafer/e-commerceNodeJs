@@ -1,0 +1,56 @@
+<h2 id="products__title">Productos</h2>
+<div id="products_dashboard">
+<!--{{#if products.length}}
+    {{#each products}}
+    <div class="product">
+        <img src='{{  this.img }}' alt='{{ this.title }}' class="product__img">
+        <div class="product__info">
+            <h4 class='product__title'> {{ this.title }} </h4>
+            <h4 class='product__price'> $ {{ this.price }} </h4>
+        </div>
+    </div>
+    {{/each}}
+  {{else}}
+  <p id="products_empty">No posee productos ingresados</p>
+{{/if}}-->
+
+
+<ul>
+    {{#if products.length}}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Thumbnail</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <h2></h2>
+
+        {{#each products}}
+        <tr>
+
+            <td>{{title}}</td>
+            <td>{{price}}</td>
+            <td>{{thumbnail}}</td>
+            <td>
+                <a href="/api/products/edit/{{id}}">
+                    Edit
+                </a>
+                <a data-method="delete" href="/api/products/delete/{{id}}">
+                    Delete
+                </a>
+            </td>
+
+        </tr>
+        {{/each}}
+
+    </table>
+
+    {{else}}
+    <p class="text-black display-3 text-center my-5">No tenemos tareas</p>
+    {{/if}}
+</ul>
+</div>

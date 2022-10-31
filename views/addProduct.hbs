@@ -1,44 +1,22 @@
- <form action="{{url}}" method="{{metodo}}">
-    <div class="mb-3">
-    <label for="title">Title:</label>
-    <input
-        type="text"
-        name="title"
-        placeholder="Add the title"
-        class="form-control"
-        value="{{productToEdit.title}}"
-        autofocus
-    />
-    </div>
-    <div class="mb-3">
-    <label for="price">Price:</label>
-     <input
-        type="text"
-        name="price"
-        placeholder="Add the price"
-        class="form-control"
-        value="{{productToEdit.price}}"
-        autofocus
-    />
-    </div>
-    <div class="mb-3">
-    <label for="thumbnail">Thumbnail:</label>
-     <input
-        type="text"
-        name="thumbnail"
-        placeholder="Add the thumbnail"
-        class="form-control"
-        value="{{productToEdit.thumbnail}}"
-        autofocus
-    />
-    </div>
+<div>
 
-    <button type="submit" class="btn btn-primary btn-block">
-    {{botonName}}
-    </button>
+    <form id="product-form" class="product-form">
+        <input type="text" name="title" placeholder="Title">
+        <input type="text" name="price" placeholder="Price">
+        <input type="text" name="thumbnail" placeholder="Thumbnail">
+        <button type="submit">Send</button>
+    </form>
+    <div id="products"></div>
+    <form id="chat">
+        <input type="text" name="message">
+        <button type="submit"> Send </button>
+    </form>
+    <div id="chats"></div>
+    <script src="/assets/js/cliente.js"></script>
 
-    
-    <a class="bbtn btn-info" href="/" role="button">
-        Back to the initial page
-    </a>
-</form>
+</div>
+
+
+<a class="btn btn-info" href="/" role="button">
+    Back to the initial page
+</a>
